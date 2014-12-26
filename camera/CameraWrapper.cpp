@@ -97,7 +97,7 @@ static int check_vendor_module()
     return rv;
 }
 
-/*#define KEY_VIDEO_HFR_VALUES "video-hfr-values"*/
+#define KEY_VIDEO_HFR_VALUES "video-hfr-values"
 
 const static char * iso_values[] = {"auto,ISO_HJR,ISO100,ISO200,ISO400,ISO800,ISO1600,auto"};
 
@@ -113,18 +113,19 @@ static char *camera_fixup_getparams(int id, const char *settings)
 
     // fix params here
     params.set(android::CameraParameters::KEY_SUPPORTED_ISO_MODES, iso_values[id]);
-
+    params.set(android::CameraParameters::KEY_EXPOSURE_COMPENSATION_STEP, "0.5");
+    params.set(android::CameraParameters::KEY_MIN_EXPOSURE_COMPENSATION, "-4");
+    params.set(android::CameraParameters::KEY_MAX_EXPOSURE_COMPENSATION, "4");
     /* If the vendor has HFR values but doesn't also expose that
      * this can be turned off, fixup the params to tell the Camera
      * that it really is okay to turn it off.
      */
-    /*const char* hfrValues = params.get(KEY_VIDEO_HFR_VALUES);
-     *if (hfrValues && *hfrValues && ! strstr(hfrValues, "off")) {
-     *   char tmp[strlen(hfrValues) + 4 + 1];
-     *   sprintf(tmp, "%s,off", hfrValues);
-     *   params.set(KEY_VIDEO_HFR_VALUES, tmp);
-     *}
-     */
+    const char* hfrValues = params.get(KEY_VIDEO_HFR_VALUES);
+    if (hfrValues && *hfrValues && ! strstr(hfrValues, "off")) {
+        char tmp[strlen(hfrValues) + 4 + 1];
+        sprintf(tmp, "%s,off", hfrValues);
+        params.set(KEY_VIDEO_HFR_VALUES, tmp);
+    }
 
 #if !LOG_NDEBUG
     ALOGV("%s: fixed parameters:", __FUNCTION__);
