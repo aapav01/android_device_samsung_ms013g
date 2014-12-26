@@ -22,5 +22,8 @@ This branch is for building CyanogenMod 11.0 Firmware.
 TODO:
 =======
 
-	- RIL
+	- Voice on SIM2
 	- 
+Speical Thanks:
+===============
+	@rox-
