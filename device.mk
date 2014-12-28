@@ -202,9 +202,6 @@ PRODUCT_COPY_FILES += \
 # Torch
 PRODUCT_PACKAGES += \
     Torch
-#RIL
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.telephony.ril_class=SerranoDSRIL
 
 # USB
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
