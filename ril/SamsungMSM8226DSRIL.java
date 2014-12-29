@@ -93,9 +93,9 @@ public class SamsungMSM8226DSRIL extends RIL implements CommandsInterface {
     private static final int RIL_UNSOL_AM = 11010;
     private static final int RIL_UNSOL_WB_AMR_STATE = 11017;
     private static final int RIL_UNSOL_RESPONSE_HANDOVER = 11021;
-    private static final int RIL_UNSOL_ON_SS_G7102 = 1040;
-    private static final int RIL_UNSOL_STK_CC_ALPHA_NOTIFY_G7102 = 1041;
-    private static final int RIL_UNSOL_UICC_SUBSCRIPTION_STATUS_CHANGED_G7102 = 11031;
+    private static final int RIL_UNSOL_ON_SS_I9300I = 1040;
+    private static final int RIL_UNSOL_STK_CC_ALPHA_NOTIFY_I9300I = 1041;
+    private static final int RIL_UNSOL_UICC_SUBSCRIPTION_STATUS_CHANGED_I9300I = 11031;
 
 
 
