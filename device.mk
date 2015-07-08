@@ -24,9 +24,16 @@ $(call inherit-product, vendor/samsung/ms013g/ms013g-vendor.mk)
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
 
-# Permissions
+# Audio
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml
+    $(LOCAL_PATH)/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+    $(LOCAL_PATH)/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
+    $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
+    $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml
+
+# Light
+PRODUCT_PACKAGES += \
+    lights.msm8226
 
 # Ramdisk
 PRODUCT_PACKAGES += \
@@ -37,7 +44,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fstab.qcom \
     init.qcom.rc \
-    init.qcom.ssr.sh \
     init.qcom.usb.rc \
     ueventd.qcom.rc \
     init.carrier.rc \
